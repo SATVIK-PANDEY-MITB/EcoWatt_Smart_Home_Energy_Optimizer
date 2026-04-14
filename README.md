@@ -84,14 +84,6 @@ npm run test:backend      # Backend tests
 npm run test:frontend     # Frontend E2E tests
 ```
 
-## License
-
-MIT License
-
-## Author
-
-**Satvik Pandey** - [GitHub](https://github.com/SATVIK-PANDEY-MITB)
-
 ## Contributing
 
 1. Fork the repository
@@ -99,3 +91,8 @@ MIT License
 3. Commit changes (`git commit -m 'Add feature'`)
 4. Push to branch (`git push origin feature/your-feature`)
 5. Open a Pull Request
+
+## License
+
+MIT License
+
