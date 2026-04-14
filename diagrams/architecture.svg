@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1050" viewBox="0 0 1800 1050">
+  <defs>
+    <style>
+      .bg { fill: #f4f8f5; }
+      .title { font: 700 36px 'Segoe UI', Arial, sans-serif; fill: #173225; }
+      .sub { font: 500 16px 'Segoe UI', Arial, sans-serif; fill: #486355; }
+      .layer { fill: #ffffff; stroke: #aac5b3; stroke-width: 2; rx: 18; ry: 18; }
+      .layerHead { fill: #e9f3eb; }
+      .h { font: 700 22px 'Segoe UI', Arial, sans-serif; fill: #173225; }
+      .t { font: 500 15px 'Segoe UI', Arial, sans-serif; fill: #425e50; }
+      .box { fill: #ffffff; stroke: #7ea28a; stroke-width: 2; rx: 14; ry: 14; }
+      .boxTitle { font: 700 17px 'Segoe UI', Arial, sans-serif; fill: #173225; }
+      .boxText { font: 500 13px 'Segoe UI', Arial, sans-serif; fill: #425e50; }
+      .arrow { stroke: #557a63; stroke-width: 3.5; fill: none; marker-end: url(#arrow); }
+      .arrowSoft { stroke: #7fa18a; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+      .legend { font: 500 12px 'Segoe UI', Arial, sans-serif; fill: #4b6658; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#557a63"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1800" height="1050"/>
+  <text class="title" x="900" y="62" text-anchor="middle">EcoWatt Architecture Diagram</text>
+  <text class="sub" x="900" y="92" text-anchor="middle">Presentation, API, business services, storage, and output channels</text>
+
+  <rect class="layer" x="70" y="140" width="1660" height="170"/>
+  <rect class="layerHead" x="70" y="140" width="1660" height="44" rx="18" ry="18"/>
+  <text class="h" x="110" y="169">Presentation Layer</text>
+
+  <rect class="box" x="120" y="205" width="300" height="82"/>
+  <text class="boxTitle" x="270" y="236" text-anchor="middle">Web Client</text>
+  <text class="boxText" x="270" y="258" text-anchor="middle">public/index.html</text>
+  <text class="boxText" x="270" y="276" text-anchor="middle">Responsive UI and feature navigation</text>
+
+  <rect class="box" x="460" y="205" width="340" height="82"/>
+  <text class="boxTitle" x="630" y="236" text-anchor="middle">Client Controller</text>
+  <text class="boxText" x="630" y="258" text-anchor="middle">public/script.js</text>
+  <text class="boxText" x="630" y="276" text-anchor="middle">Auth token, API calls, chart rendering</text>
+
+  <rect class="box" x="840" y="205" width="260" height="82"/>
+  <text class="boxTitle" x="970" y="236" text-anchor="middle">PWA Runtime</text>
+  <text class="boxText" x="970" y="258" text-anchor="middle">manifest.json + sw.js</text>
+  <text class="boxText" x="970" y="276" text-anchor="middle">Installability and cache behavior</text>
+
+  <rect class="box" x="1140" y="205" width="540" height="82"/>
+  <text class="boxTitle" x="1410" y="236" text-anchor="middle">Feature Modules</text>
+  <text class="boxText" x="1410" y="258" text-anchor="middle">Auth, Energy, Forecast, Notifications, Ops, Analytics, History</text>
+  <text class="boxText" x="1410" y="276" text-anchor="middle">Single-page interactions over REST endpoints</text>
+
+  <rect class="layer" x="70" y="340" width="1660" height="240"/>
+  <rect class="layerHead" x="70" y="340" width="1660" height="44" rx="18" ry="18"/>
+  <text class="h" x="110" y="369">API and Security Layer</text>
+
+  <rect class="box" x="120" y="405" width="420" height="150"/>
+  <text class="boxTitle" x="330" y="434" text-anchor="middle">Express Server</text>
+  <text class="boxText" x="330" y="456" text-anchor="middle">server.js (Node.js)</text>
+  <text class="boxText" x="330" y="476" text-anchor="middle">Route groups: auth, usage, forecast, digest, alerts, reports</text>
+  <text class="boxText" x="330" y="496" text-anchor="middle">Versioned path support and static hosting</text>
+  <text class="boxText" x="330" y="516" text-anchor="middle">/health, /ready, /metrics/overview operational endpoints</text>
+
+  <rect class="box" x="570" y="405" width="360" height="150"/>
+  <text class="boxTitle" x="750" y="434" text-anchor="middle">Security and Controls</text>
+  <text class="boxText" x="750" y="456" text-anchor="middle">helmet, cors, express-rate-limit, morgan</text>
+  <text class="boxText" x="750" y="476" text-anchor="middle">JWT auth, guest fallback, request ids</text>
+  <text class="boxText" x="750" y="496" text-anchor="middle">Input validation via zod schemas</text>
+
+  <rect class="box" x="960" y="405" width="320" height="150"/>
+  <text class="boxTitle" x="1120" y="434" text-anchor="middle">Core Services</text>
+  <text class="boxText" x="1120" y="456" text-anchor="middle">Billing slab cost engine</text>
+  <text class="boxText" x="1120" y="476" text-anchor="middle">Anomaly detection and alerts</text>
+  <text class="boxText" x="1120" y="496" text-anchor="middle">Forecast and what-if computation</text>
+  <text class="boxText" x="1120" y="516" text-anchor="middle">Digest scheduling and delivery logging</text>
+
+  <rect class="box" x="1310" y="405" width="370" height="150"/>
+  <text class="boxTitle" x="1495" y="434" text-anchor="middle">Output Adapters</text>
+  <text class="boxText" x="1495" y="456" text-anchor="middle">JSON REST responses for dashboards</text>
+  <text class="boxText" x="1495" y="476" text-anchor="middle">CSV export streams</text>
+  <text class="boxText" x="1495" y="496" text-anchor="middle">PDF generation with PDFKit</text>
+  <text class="boxText" x="1495" y="516" text-anchor="middle">Optional webhook delivery mode</text>
+
+  <rect class="layer" x="70" y="610" width="1660" height="240"/>
+  <rect class="layerHead" x="70" y="610" width="1660" height="44" rx="18" ry="18"/>
+  <text class="h" x="110" y="639">Data Layer</text>
+
+  <rect class="box" x="120" y="675" width="520" height="150"/>
+  <text class="boxTitle" x="380" y="704" text-anchor="middle">SQLite Database (database.db)</text>
+  <text class="boxText" x="380" y="726" text-anchor="middle">users, appliances, usage, tariff, budgets, user_budgets</text>
+  <text class="boxText" x="380" y="746" text-anchor="middle">alerts, report_snapshots, notification_preferences</text>
+  <text class="boxText" x="380" y="766" text-anchor="middle">digest_jobs, notification_deliveries</text>
+  <text class="boxText" x="380" y="786" text-anchor="middle">User-scoped reads and writes via user_id</text>
+
+  <rect class="box" x="680" y="675" width="340" height="150"/>
+  <text class="boxTitle" x="850" y="704" text-anchor="middle">Configuration and Static Data</text>
+  <text class="boxText" x="850" y="726" text-anchor="middle">tips.json energy tips catalog</text>
+  <text class="boxText" x="850" y="746" text-anchor="middle">.env runtime configuration</text>
+  <text class="boxText" x="850" y="766" text-anchor="middle">CORS origin, JWT secret, webhook options</text>
+
+  <rect class="box" x="1060" y="675" width="620" height="150"/>
+  <text class="boxTitle" x="1370" y="704" text-anchor="middle">Consumers of Persisted Data</text>
+  <text class="boxText" x="1370" y="726" text-anchor="middle">Dashboard cards, trend charts, category analytics, top appliances</text>
+  <text class="boxText" x="1370" y="746" text-anchor="middle">Monthly summary, report history, notification center, ops panel</text>
+  <text class="boxText" x="1370" y="766" text-anchor="middle">Forecast labs and sustainability metrics</text>
+
+  <path class="arrow" d="M 420 246 L 460 246"/>
+  <path class="arrow" d="M 800 246 L 840 246"/>
+  <path class="arrow" d="M 1100 246 L 1140 246"/>
+
+  <path class="arrow" d="M 630 287 L 630 405"/>
+  <path class="arrowSoft" d="M 970 287 L 970 405"/>
+  <path class="arrowSoft" d="M 1410 287 L 1410 405"/>
+
+  <path class="arrow" d="M 330 555 L 330 675"/>
+  <path class="arrow" d="M 750 555 L 520 675"/>
+  <path class="arrow" d="M 1120 555 L 850 675"/>
+  <path class="arrow" d="M 1495 555 L 1370 675"/>
+
+  <path class="arrowSoft" d="M 640 750 L 680 750"/>
+  <path class="arrowSoft" d="M 1020 750 L 1060 750"/>
+
+  <rect class="layer" x="70" y="880" width="1660" height="120"/>
+  <text class="h" x="110" y="928">Quality and Delivery</text>
+  <text class="t" x="110" y="955">Automated tests: backend Node test suite + frontend Playwright smoke tests</text>
+  <text class="t" x="110" y="980">Deployment model: single Node service serving API + static frontend from one process</text>
+
+  <text class="legend" x="1500" y="975">Solid arrows: primary runtime flow</text>
+  <text class="legend" x="1500" y="995">Soft arrows: secondary/supporting flow</text>
+</svg>

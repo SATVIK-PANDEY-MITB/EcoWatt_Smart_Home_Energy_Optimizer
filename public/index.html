@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>EcoWatt</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#eaf2e7">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header>
+      <h1>EcoWatt Smart Home Energy Optimizer</h1>
+      <p>Track usage, forecast bills, and stay under budget.</p>
+      <div class="header-tools">
+        <button class="secondary" onclick="toggleTheme()">Toggle Theme</button>
+      </div>
+      <nav class="feature-nav" aria-label="Feature navigation">
+        <button type="button" class="secondary feature-nav-btn active" data-group="auth" onclick="showFeatureGroup('auth')">Auth</button>
+        <button type="button" class="secondary feature-nav-btn" data-group="energy" onclick="showFeatureGroup('energy')">Energy</button>
+        <button type="button" class="secondary feature-nav-btn" data-group="forecast" onclick="showFeatureGroup('forecast')">Forecast</button>
+        <button type="button" class="secondary feature-nav-btn" data-group="notifications" onclick="showFeatureGroup('notifications')">Notifications</button>
+        <button type="button" class="secondary feature-nav-btn" data-group="operations" onclick="showFeatureGroup('operations')">Ops</button>
+        <button type="button" class="secondary feature-nav-btn" data-group="analytics" onclick="showFeatureGroup('analytics')">Analytics</button>
+        <button type="button" class="secondary feature-nav-btn" data-group="history" onclick="showFeatureGroup('history')">History</button>
+      </nav>
+    </header>
+
+    <section class="panel auth-panel feature-section" data-group="auth">
+      <div>
+        <h2>Account</h2>
+        <p id="authStatus">Guest mode active</p>
+      </div>
+      <div class="auth-grid">
+        <input id="authName" placeholder="Name (for register)">
+        <input id="authEmail" placeholder="Email">
+        <input id="authPassword" placeholder="Password" type="password">
+      </div>
+      <div class="auth-actions">
+        <button id="registerBtn" onclick="register()">Register</button>
+        <button id="loginBtn" onclick="login()">Login</button>
+        <button class="secondary" onclick="logout()">Logout</button>
+      </div>
+    </section>
+
+    <section class="panel two-col feature-section" data-group="energy">
+      <div>
+        <h2>Add Appliance</h2>
+        <input id="name" placeholder="Appliance Name">
+        <input id="category" placeholder="Category (e.g. Lighting)">
+        <input id="power" placeholder="Power (W)">
+        <button onclick="addAppliance()">Add Appliance</button>
+      </div>
+      <div>
+        <h2>Add Usage</h2>
+        <select id="appliance_id"></select>
+        <input id="hours" placeholder="Hours Used Today">
+        <button onclick="addUsage()">Add Usage</button>
+      </div>
+    </section>
+
+    <section class="panel two-col feature-section" data-group="energy">
+      <div>
+        <h2>Search Appliances</h2>
+        <input id="applianceSearch" placeholder="Search by name or category">
+        <button onclick="searchAppliances()">Search</button>
+      </div>
+      <div>
+        <h2>Usage Date Filter</h2>
+        <input id="historyStart" type="date">
+        <input id="historyEnd" type="date">
+        <button onclick="loadUsageHistory()">Apply Date Filter</button>
+      </div>
+    </section>
+
+    <section class="panel two-col feature-section" data-group="forecast">
+      <div>
+        <h2>What-If Simulator</h2>
+        <select id="simulate_appliance_id"></select>
+        <input id="simulate_hours" placeholder="Extra Hours">
+        <button onclick="simulateUsage()">Simulate Impact</button>
+        <pre id="simulationResult"></pre>
+      </div>
+      <div>
+        <h2>Reports</h2>
+        <button onclick="openReport()">Open Report</button>
+        <button onclick="downloadReportPdf()">Download PDF</button>
+        <button onclick="downloadReportCsv()">Download CSV</button>
+      </div>
+    </section>
+
+    <section class="panel feature-section" data-group="energy">
+      <h2>Monthly Summary</h2>
+      <button onclick="loadMonthlySummary()">Refresh Monthly Summary</button>
+      <button onclick="generateDigest()">Generate Digest</button>
+      <pre id="monthlySummaryResult"></pre>
+    </section>
+
+    <section class="panel feature-section" data-group="forecast">
+      <h2>Forecast Explanation</h2>
+      <button onclick="loadForecastExplanation()">Refresh Explanation</button>
+      <pre id="forecastExplanationResult"></pre>
+    </section>
+
+    <section class="panel two-col feature-section" data-group="notifications">
+      <div>
+        <h2>Scheduled Digests</h2>
+        <label><input id="digestEnabled" type="checkbox"> Enable scheduled digest</label>
+        <input id="digestInterval" placeholder="Interval in minutes" value="1440">
+        <label><input id="digestChannelInApp" type="checkbox" checked> In-app</label>
+        <label><input id="digestChannelPush" type="checkbox"> Push</label>
+        <label><input id="digestChannelEmail" type="checkbox"> Email</label>
+        <button onclick="saveDigestSchedule()">Save Digest Schedule</button>
+        <button onclick="loadDigestSchedule()">Refresh Digest Schedule</button>
+        <pre id="digestScheduleResult"></pre>
+      </div>
+      <div>
+        <h2>Notification Deliveries</h2>
+        <button onclick="sendTestDelivery()">Send Test Delivery</button>
+        <button onclick="loadNotificationDeliveries()">Refresh Deliveries</button>
+        <button onclick="loadNotificationProviderStatus()">Check Provider</button>
+        <pre id="deliveryProviderStatus"></pre>
+        <ul id="deliveryList"></ul>
+      </div>
+    </section>
+
+    <section class="panel feature-section" data-group="forecast">
+      <h2>Advanced Forecast</h2>
+      <button onclick="loadAdvancedForecast()">Refresh Advanced Forecast</button>
+      <pre id="advancedForecastResult"></pre>
+      <canvas id="advancedForecastChart"></canvas>
+    </section>
+
+    <section class="panel two-col feature-section" data-group="forecast">
+      <div>
+        <h2>Forecast Labs</h2>
+        <input id="whatIfDelta" type="number" placeholder="What-If delta percent (e.g. 15)">
+        <button onclick="loadForecastWhatIf()">Run What-If</button>
+        <button onclick="loadForecastRisk()">Load Risk</button>
+        <button onclick="loadForecastTrendScore()">Load Trend Score</button>
+        <button onclick="loadForecastWeekdayProfile()">Load Weekday Profile</button>
+        <button onclick="loadForecastSavingsPlan()">Load Savings Plan</button>
+      </div>
+      <div>
+        <h2>Forecast Insights</h2>
+        <pre id="whatIfResult"></pre>
+        <pre id="forecastRiskResult"></pre>
+        <pre id="forecastTrendScoreResult"></pre>
+        <pre id="forecastWeekdayProfileResult"></pre>
+        <pre id="forecastSavingsPlanResult"></pre>
+      </div>
+    </section>
+
+    <section class="panel two-col feature-section" data-group="energy">
+      <div>
+        <h2>Monthly Budget</h2>
+        <input id="budget" placeholder="Budget in INR">
+        <button onclick="setBudget()">Save Budget</button>
+      </div>
+      <div class="actions">
+        <h2>Analytics</h2>
+        <input id="autoRefreshMinutes" placeholder="Auto Refresh Minutes" value="5">
+        <button onclick="calculate()">Refresh Dashboard</button>
+      </div>
+    </section>
+
+    <section class="panel feature-section" data-group="notifications">
+      <h2>Alerts</h2>
+      <ul id="alertsList"></ul>
+    </section>
+
+    <section class="panel two-col feature-section" data-group="notifications">
+      <div>
+        <h2>Alerts Operations</h2>
+        <button onclick="loadAlertsSummary()">Load Alerts Summary</button>
+        <button onclick="ackAllAlerts()">Acknowledge All</button>
+        <input id="alertsDeleteId" type="number" placeholder="Alert ID to delete">
+        <button onclick="deleteAlertById()">Delete One Alert</button>
+        <input id="alertsBulkDeleteAck" placeholder="Bulk delete filter: all / ack / pending">
+        <button onclick="bulkDeleteAlerts()">Bulk Delete Alerts</button>
+      </div>
+      <div>
+        <h2>Alerts Ops Result</h2>
+        <pre id="alertsSummaryResult"></pre>
+      </div>
+    </section>
+
+    <section class="panel two-col feature-section" data-group="notifications">
+      <div>
+        <h2>Notifications</h2>
+        <label><input id="browserNotifications" type="checkbox"> Browser notifications</label>
+        <label><input id="inAppNotifications" type="checkbox"> In-app alerts</label>
+        <button onclick="saveNotificationPreferences()">Save Notification Preferences</button>
+        <button onclick="enableBrowserNotifications()">Enable Browser Notifications</button>
+      </div>
+      <div>
+        <h2>Anomalies</h2>
+        <button onclick="loadAnomalies()">Refresh Anomalies</button>
+        <ul id="anomalyList"></ul>
+      </div>
+    </section>
+
+    <section class="panel two-col feature-section" data-group="operations">
+      <div>
+        <h2>Delivery Operations</h2>
+        <button onclick="loadDeliveryStats()">Load Delivery Stats</button>
+        <input id="deliveryRetryId" type="number" placeholder="Delivery ID to retry">
+        <button onclick="retryDeliveryById()">Retry One Delivery</button>
+        <input id="deliveryRetryLimit" type="number" value="10" placeholder="Retry failed limit">
+        <button onclick="retryFailedDeliveries()">Retry Failed Deliveries</button>
+        <button onclick="exportDeliveriesCsv()">Export Deliveries CSV</button>
+        <input id="deliveryDeleteId" type="number" placeholder="Delivery ID to delete">
+        <button onclick="deleteDeliveryById()">Delete One Delivery</button>
+        <input id="deliveryDeleteStatus" placeholder="Bulk status filter (optional)">
+        <button onclick="bulkDeleteDeliveries()">Bulk Delete Deliveries</button>
+      </div>
+      <div>
+        <h2>Delivery Ops Result</h2>
+        <pre id="deliveryStatsResult"></pre>
+      </div>
+    </section>
+
+    <section class="panel two-col feature-section" data-group="operations">
+      <div>
+        <h2>Digest Operations</h2>
+        <input id="digestRunMonth" placeholder="Run month (YYYY-MM, optional)">
+        <button onclick="loadDigestPreview()">Preview Digest</button>
+        <button onclick="runDigestNow()">Run Digest Now</button>
+        <button onclick="loadDigestJobStatus()">Digest Job Status</button>
+        <input id="digestEnableInterval" type="number" value="1440" placeholder="Enable interval minutes">
+        <button onclick="enableDigestScheduleQuick()">Quick Enable Digest</button>
+        <button onclick="disableDigestScheduleQuick()">Quick Disable Digest</button>
+      </div>
+      <div>
+        <h2>Digest Ops Result</h2>
+        <pre id="digestPreviewResult"></pre>
+        <pre id="digestJobStatusResult"></pre>
+      </div>
+    </section>
+
+    <section class="panel two-col feature-section" data-group="operations">
+      <div>
+        <h2>Sustainability and Health</h2>
+        <input id="sustainabilityFactor" type="number" step="0.01" value="0.82" placeholder="Emission factor">
+        <button onclick="loadSustainability()">Load Sustainability</button>
+        <button onclick="loadExtendedHealth()">Load Extended Health</button>
+        <button onclick="loadMetricsOverview()">Load Metrics Overview</button>
+      </div>
+      <div>
+        <h2>Ops Result</h2>
+        <pre id="sustainabilityResult"></pre>
+        <pre id="healthExtendedResult"></pre>
+        <pre id="metricsOverviewResult"></pre>
+      </div>
+    </section>
+
+    <section class="stats feature-section" data-group="analytics">
+      <article>
+        <h3>Total Units</h3>
+        <p id="totalUnits">0.00</p>
+      </article>
+      <article>
+        <h3>Current Cost</h3>
+        <p id="currentCost">0.00</p>
+      </article>
+      <article>
+        <h3>Predicted Cost</h3>
+        <p id="projectedCost">0.00</p>
+      </article>
+      <article>
+        <h3>Budget Delta</h3>
+        <p id="budgetDelta">0.00</p>
+      </article>
+    </section>
+
+    <section class="panel feature-section" data-group="analytics">
+      <h2>Summary</h2>
+      <pre id="result"></pre>
+    </section>
+
+    <section class="panel two-col feature-section" data-group="analytics">
+      <div>
+        <h2>Appliance Usage Breakdown</h2>
+        <div id="chart" class="svg-chart" aria-label="Appliance usage breakdown chart"></div>
+      </div>
+      <div>
+        <h2>7-Day Usage Trend</h2>
+        <div id="trendChart" class="svg-chart" aria-label="7-day usage trend chart"></div>
+      </div>
+    </section>
+
+    <section class="panel three-col feature-section" data-group="analytics">
+      <div>
+        <h2>Appliances</h2>
+        <ul id="applianceList"></ul>
+      </div>
+      <div>
+        <h2>Category Analytics</h2>
+        <ul id="categoryList"></ul>
+      </div>
+      <div>
+        <h2>Top Energy Users</h2>
+        <ul id="topAppliances"></ul>
+      </div>
+    </section>
+
+    <section class="panel feature-section" data-group="history">
+      <h2>Usage History</h2>
+      <ul id="usageHistoryList"></ul>
+    </section>
+
+    <section class="panel feature-section" data-group="history">
+      <h2>Report History</h2>
+      <button onclick="loadReportHistory()">Refresh Report History</button>
+      <ul id="reportHistoryList"></ul>
+    </section>
+
+    <section class="panel feature-section" data-group="analytics">
+      <h2>Smart Tips</h2>
+      <ul id="tipsList"></ul>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

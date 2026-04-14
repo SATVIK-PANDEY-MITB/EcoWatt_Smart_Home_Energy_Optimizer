@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1100" viewBox="0 0 1600 1100">
+  <defs>
+    <style>
+      .bg { fill: #fbf8f2; }
+      .title { font: 700 34px 'Segoe UI', Arial, sans-serif; fill: #2b2416; }
+      .sub { font: 500 15px 'Segoe UI', Arial, sans-serif; fill: #66583f; }
+      .col { fill: #fffdf8; stroke: #d6c7a6; stroke-width: 2; rx: 18; ry: 18; }
+      .head { font: 700 22px 'Segoe UI', Arial, sans-serif; fill: #2b2416; }
+      .item { font: 500 17px 'Segoe UI', Arial, sans-serif; fill: #5f533d; }
+      .accent { fill: #f2e7cf; }
+    </style>
+  </defs>
+  <rect class="bg" width="1600" height="1100"/>
+  <text class="title" x="800" y="60" text-anchor="middle">EcoWatt Functional Overview</text>
+  <text class="sub" x="800" y="90" text-anchor="middle">Main user-facing capabilities grouped by the sections in the app</text>
+
+  <rect class="col" x="80" y="140" width="340" height="410"/>
+  <rect class="accent" x="80" y="140" width="340" height="60" rx="18" ry="18"/>
+  <text class="head" x="250" y="178" text-anchor="middle">Authentication</text>
+  <text class="item" x="110" y="235">Register</text>
+  <text class="item" x="110" y="272">Login</text>
+  <text class="item" x="110" y="309">Guest mode</text>
+  <text class="item" x="110" y="346">JWT session token</text>
+  <text class="item" x="110" y="383">Logout / clear token</text>
+
+  <rect class="col" x="470" y="140" width="340" height="410"/>
+  <rect class="accent" x="470" y="140" width="340" height="60" rx="18" ry="18"/>
+  <text class="head" x="640" y="178" text-anchor="middle">Energy Tracking</text>
+  <text class="item" x="500" y="235">Add appliance</text>
+  <text class="item" x="500" y="272">Add usage</text>
+  <text class="item" x="500" y="309">Search appliances</text>
+  <text class="item" x="500" y="346">Usage history</text>
+  <text class="item" x="500" y="383">Monthly summary</text>
+  <text class="item" x="500" y="420">Budget set / get</text>
+  <text class="item" x="500" y="457">Bill calculation</text>
+
+  <rect class="col" x="860" y="140" width="340" height="410"/>
+  <rect class="accent" x="860" y="140" width="340" height="60" rx="18" ry="18"/>
+  <text class="head" x="1030" y="178" text-anchor="middle">Forecasting</text>
+  <text class="item" x="890" y="235">Forecast explanation</text>
+  <text class="item" x="890" y="272">Advanced forecast</text>
+  <text class="item" x="890" y="309">What-if simulation</text>
+  <text class="item" x="890" y="346">Risk score</text>
+  <text class="item" x="890" y="383">Trend score</text>
+  <text class="item" x="890" y="420">Weekday profile</text>
+  <text class="item" x="890" y="457">Savings plan</text>
+
+  <rect class="col" x="1250" y="140" width="270" height="410"/>
+  <rect class="accent" x="1250" y="140" width="270" height="60" rx="18" ry="18"/>
+  <text class="head" x="1385" y="178" text-anchor="middle">Notifications</text>
+  <text class="item" x="1280" y="235">Notification preferences</text>
+  <text class="item" x="1280" y="272">Alerts list</text>
+  <text class="item" x="1280" y="309">Acknowledge alert</text>
+  <text class="item" x="1280" y="346">Bulk acknowledge / delete</text>
+  <text class="item" x="1280" y="383">Anomaly detection</text>
+
+  <rect class="col" x="210" y="625" width="470" height="350"/>
+  <rect class="accent" x="210" y="625" width="470" height="60" rx="18" ry="18"/>
+  <text class="head" x="445" y="663" text-anchor="middle">Operations</text>
+  <text class="item" x="245" y="720">Digest schedule</text>
+  <text class="item" x="245" y="757">Run digest now</text>
+  <text class="item" x="245" y="794">Preview digest</text>
+  <text class="item" x="245" y="831">Delivery log</text>
+  <text class="item" x="245" y="868">Retry failed deliveries</text>
+  <text class="item" x="245" y="905">CSV export</text>
+  <text class="item" x="245" y="942">Provider status</text>
+
+  <rect class="col" x="760" y="625" width="530" height="350"/>
+  <rect class="accent" x="760" y="625" width="530" height="60" rx="18" ry="18"/>
+  <text class="head" x="1025" y="663" text-anchor="middle">Analytics and Reports</text>
+  <text class="item" x="795" y="720">Category analytics</text>
+  <text class="item" x="795" y="757">Usage trend</text>
+  <text class="item" x="795" y="794">Top appliances</text>
+  <text class="item" x="795" y="831">Report page</text>
+  <text class="item" x="795" y="868">PDF export</text>
+  <text class="item" x="795" y="905">CSV export</text>
+  <text class="item" x="795" y="942">Sustainability metrics</text>
+  <text class="item" x="795" y="979">Health metrics</text>
+</svg>

@@ -1,0 +1,28 @@
+flowchart LR
+  U[User in browser] --> UI[Public frontend\nindex.html + script.js]
+  UI -->|REST calls| API[Express app\nserver.js]
+  API --> MW[Security + middleware\nhelmet, cors, rate limit, auth, logging]
+  MW --> ROUTES[Route handlers\n/register /login /add-appliance /add-usage /calculate /forecast /digest /alerts]
+
+  ROUTES --> DB[(SQLite database.db)]
+  ROUTES --> TIPS[tips.json]
+  ROUTES --> PDF[PDFKit report generation]
+  ROUTES --> CSV[CSV report export]
+
+  DB --> ROUTES
+  TIPS --> ROUTES
+  PDF --> U
+  CSV --> U
+  ROUTES --> UI
+
+  subgraph Key backend outputs
+    ALERTS[Alerts and anomalies]
+    SUMMARY[Monthly summary and budget delta]
+    FORECAST[Forecast and what-if results]
+    OPS[Notification delivery and digest operations]
+  end
+
+  ROUTES --> ALERTS
+  ROUTES --> SUMMARY
+  ROUTES --> FORECAST
+  ROUTES --> OPS
