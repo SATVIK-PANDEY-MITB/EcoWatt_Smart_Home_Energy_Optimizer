@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <style>
+      .bg { fill: #f7faf6; }
+      .title { font: 700 34px 'Segoe UI', Arial, sans-serif; fill: #17301d; }
+      .sub { font: 500 15px 'Segoe UI', Arial, sans-serif; fill: #4a6550; }
+      .box { fill: #ffffff; stroke: #92b29a; stroke-width: 2; rx: 16; ry: 16; }
+      .box2 { fill: #eef6ef; stroke: #6f9b79; stroke-width: 2; rx: 16; ry: 16; }
+      .label { font: 600 18px 'Segoe UI', Arial, sans-serif; fill: #17301d; }
+      .small { font: 500 13px 'Segoe UI', Arial, sans-serif; fill: #4a6550; }
+      .tiny { font: 500 12px 'Segoe UI', Arial, sans-serif; fill: #4a6550; }
+      .arrow { stroke: #56785d; stroke-width: 4; fill: none; marker-end: url(#arrow); }
+      .arrow2 { stroke: #7ea889; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#56785d"/>
+    </marker>
+  </defs>
+  <rect class="bg" x="0" y="0" width="1600" height="900"/>
+  <text class="title" x="800" y="62" text-anchor="middle">EcoWatt Data Flow Diagram</text>
+  <text class="sub" x="800" y="92" text-anchor="middle">Browser UI, Express backend, SQLite persistence, and generated outputs</text>
+
+  <rect class="box2" x="70" y="160" width="200" height="110"/>
+  <text class="label" x="170" y="205" text-anchor="middle">User</text>
+  <text class="small" x="170" y="232" text-anchor="middle">Browser / device</text>
+
+  <rect class="box" x="320" y="145" width="240" height="140"/>
+  <text class="label" x="440" y="188" text-anchor="middle">Frontend</text>
+  <text class="small" x="440" y="216" text-anchor="middle">public/index.html</text>
+  <text class="small" x="440" y="238" text-anchor="middle">public/script.js</text>
+  <text class="tiny" x="440" y="262" text-anchor="middle">Auth, energy, forecast, notifications, ops</text>
+
+  <rect class="box2" x="610" y="145" width="250" height="140"/>
+  <text class="label" x="735" y="188" text-anchor="middle">Express API</text>
+  <text class="small" x="735" y="216" text-anchor="middle">server.js</text>
+  <text class="small" x="735" y="238" text-anchor="middle">JWT, validation, rate limit, logging</text>
+  <text class="tiny" x="735" y="262" text-anchor="middle">REST endpoints and business logic</text>
+
+  <rect class="box" x="920" y="92" width="240" height="110"/>
+  <text class="label" x="1040" y="135" text-anchor="middle">SQLite DB</text>
+  <text class="small" x="1040" y="162" text-anchor="middle">database.db</text>
+
+  <rect class="box" x="920" y="230" width="240" height="110"/>
+  <text class="label" x="1040" y="273" text-anchor="middle">tips.json</text>
+  <text class="small" x="1040" y="300" text-anchor="middle">Energy saving tips</text>
+
+  <rect class="box" x="920" y="368" width="240" height="110"/>
+  <text class="label" x="1040" y="411" text-anchor="middle">PDF / CSV</text>
+  <text class="small" x="1040" y="438" text-anchor="middle">Reports and exports</text>
+
+  <rect class="box2" x="1220" y="145" width="250" height="140"/>
+  <text class="label" x="1345" y="188" text-anchor="middle">Outputs</text>
+  <text class="small" x="1345" y="216" text-anchor="middle">Alerts, summaries, forecast</text>
+  <text class="small" x="1345" y="238" text-anchor="middle">Digest jobs and delivery logs</text>
+  <text class="tiny" x="1345" y="262" text-anchor="middle">Returned to the frontend</text>
+
+  <path class="arrow" d="M 270 215 L 320 215"/>
+  <path class="arrow" d="M 560 215 L 610 215"/>
+  <path class="arrow" d="M 860 208 L 920 148"/>
+  <path class="arrow2" d="M 860 230 L 920 285"/>
+  <path class="arrow2" d="M 860 252 L 920 423"/>
+  <path class="arrow" d="M 860 215 L 1220 215"/>
+  <path class="arrow" d="M 1040 202 L 1040 230"/>
+  <path class="arrow" d="M 1040 340 L 1040 368"/>
+  <path class="arrow" d="M 1345 285 L 1345 320 L 440 320 L 440 285" opacity="0.0"/>
+  <path class="arrow2" d="M 1220 215 L 1185 215" opacity="0"/>
+  <path class="arrow" d="M 1220 215 L 1170 215" opacity="0"/>
+  <path class="arrow" d="M 1220 215 L 1170 215" opacity="0"/>
+  <path class="arrow" d="M 1170 215 L 1170 340 L 860 340" opacity="0"/>
+  <path class="arrow" d="M 1220 215 L 1160 215" opacity="0"/>
+  <path class="arrow" d="M 1170 215 L 1160 215" opacity="0"/>
+  <path class="arrow" d="M 1170 215 L 1160 215" opacity="0"/>
+  <path class="arrow" d="M 1220 215 L 1170 215" opacity="0"/>
+
+  <path class="arrow" d="M 1220 215 L 1220 215" opacity="0"/>
+  <path class="arrow" d="M 1170 215 L 1170 470 L 150 470 L 150 270" opacity="0"/>
+
+  <path class="arrow" d="M 1170 215 L 1170 150" opacity="0"/>
+  <path class="arrow" d="M 1170 215 L 1170 285" opacity="0"/>
+
+  <path class="arrow" d="M 1220 215 L 1170 215" opacity="0"/>
+  <path class="arrow" d="M 1345 285 L 1345 320" opacity="0"/>
+  <path class="arrow" d="M 1345 145 L 1345 110 L 1160 110" opacity="0"/>
+
+  <text class="small" x="170" y="505" text-anchor="middle">Primary request/response path</text>
+  <text class="small" x="1040" y="515" text-anchor="middle">Read/write data stores</text>
+  <text class="small" x="1345" y="515" text-anchor="middle">Rendered views and exports</text>
+</svg>

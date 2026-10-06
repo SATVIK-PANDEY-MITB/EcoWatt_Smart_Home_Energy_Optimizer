@@ -1,0 +1,103 @@
+erDiagram
+  USERS {
+    int id PK
+    text email UK
+    text password_hash
+    text name
+    text role
+  }
+
+  APPLIANCES {
+    int id PK
+    text name
+    int power
+    text category
+    int user_id
+  }
+
+  USAGE {
+    int id PK
+    int appliance_id
+    real hours
+    text date
+    int user_id
+  }
+
+  TARIFF {
+    int id PK
+    int min_units
+    int max_units
+    real rate
+  }
+
+  BUDGETS {
+    int id PK
+    text month UK
+    real budget
+  }
+
+  USER_BUDGETS {
+    int id PK
+    int user_id
+    text month
+    real budget
+  }
+
+  ALERTS {
+    int id PK
+    int user_id
+    text type
+    text message
+    text created_at
+    int acknowledged
+  }
+
+  REPORT_SNAPSHOTS {
+    int id PK
+    int user_id
+    text month
+    real total_units
+    real cost
+    real budget
+    real budget_delta
+    text top_appliance
+    text created_at
+  }
+
+  NOTIFICATION_PREFERENCES {
+    int user_id PK
+    int browser
+    int in_app
+  }
+
+  DIGEST_JOBS {
+    int user_id PK
+    int enabled
+    int interval_minutes
+    text last_run_at
+    text next_run_at
+    text channels
+  }
+
+  NOTIFICATION_DELIVERIES {
+    int id PK
+    int user_id
+    text channel
+    text subject
+    text message
+    text status
+    text created_at
+    text sent_at
+    text metadata
+  }
+
+  USERS ||--o{ APPLIANCES : owns
+  USERS ||--o{ USAGE : records
+  APPLIANCES ||--o{ USAGE : measured_in
+  USERS ||--o{ ALERTS : receives
+  USERS ||--o{ REPORT_SNAPSHOTS : saves
+  USERS ||--|| NOTIFICATION_PREFERENCES : configures
+  USERS ||--|| DIGEST_JOBS : schedules
+  USERS ||--o{ NOTIFICATION_DELIVERIES : logs
+  USERS ||--o{ USER_BUDGETS : sets
+  BUDGETS ||--o{ USER_BUDGETS : default_month_budget

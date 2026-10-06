@@ -1,0 +1,61 @@
+﻿
+Running 1 test using 1 worker
+
+  Γ£ÿ  1 test\frontend-smoke.spec.js:3:1 ΓÇ║ frontend smoke check for notifications and ops features (7.4s)
+
+
+  1) test\frontend-smoke.spec.js:3:1 ΓÇ║ frontend smoke check for notifications and ops features ΓöÇΓöÇΓöÇΓöÇΓöÇ
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator: locator('#metricsOverviewResult')
+    Timeout: 5000ms
+    [32m- Expected substring  - 1[39m
+    [31m+ Received string     + 8[39m
+
+    [32m- uptime[39m
+    [31m+ {[39m
+    [31m+   "appliances": 1,[39m
+    [31m+   "usageEntries": 1,[39m
+    [31m+   "failedDeliveries": 0,[39m
+    [31m+   "pendingAlerts": 0,[39m
+    [31m+   "currentBudget": 2000,[39m
+    [31m+   "generatedAt": "2026-04-06T13:42:10.826Z"[39m
+    [31m+ }[39m
+
+    Call log:
+    [2m  - Expect "toContainText" with timeout 5000ms[22m
+    [2m  - waiting for locator('#metricsOverviewResult')[22m
+    [2m    2 ├ù locator resolved to <pre id="metricsOverviewResult">{Γå╡  "appliances": 3,Γå╡  "usageEntries": 1,Γå╡  "failΓÇª</pre>[22m
+    [2m      - unexpected value "{[22m
+    [2m  "appliances": 3,[22m
+    [2m  "usageEntries": 1,[22m
+    [2m  "failedDeliveries": 0,[22m
+    [2m  "pendingAlerts": 0,[22m
+    [2m  "currentBudget": 2000,[22m
+    [2m  "generatedAt": "2026-04-06T13:42:09.111Z"[22m
+    [2m}"[22m
+    [2m    7 ├ù locator resolved to <pre id="metricsOverviewResult">{Γå╡  "appliances": 1,Γå╡  "usageEntries": 1,Γå╡  "failΓÇª</pre>[22m
+    [2m      - unexpected value "{[22m
+    [2m  "appliances": 1,[22m
+    [2m  "usageEntries": 1,[22m
+    [2m  "failedDeliveries": 0,[22m
+    [2m  "pendingAlerts": 0,[22m
+    [2m  "currentBudget": 2000,[22m
+    [2m  "generatedAt": "2026-04-06T13:42:10.826Z"[22m
+    [2m}"[22m
+
+
+       95 |   await page.click('button:has-text("Load Extended Health")');
+       96 |   await page.click('button:has-text("Load Metrics Overview")');
+    >  97 |   await expect(page.locator("#metricsOverviewResult")).toContainText("uptime");
+          |                                                        ^
+       98 |
+       99 |   const firstAlertId = await page.evaluate(async () => {
+      100 |     const token = localStorage.getItem("ecowattToken");
+        at C:\Users\ayush\EcoWatt\test\frontend-smoke.spec.js:97:56
+
+    Error Context: test-results\frontend-smoke-frontend-sm-e446a-ifications-and-ops-features\error-context.md
+
+  1 failed
+    test\frontend-smoke.spec.js:3:1 ΓÇ║ frontend smoke check for notifications and ops features ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ

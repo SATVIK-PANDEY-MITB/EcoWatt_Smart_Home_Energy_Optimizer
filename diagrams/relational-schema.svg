@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1200" viewBox="0 0 1800 1200">
+  <defs>
+    <style>
+      .bg { fill: #f5f7fb; }
+      .title { font: 700 34px 'Segoe UI', Arial, sans-serif; fill: #1e293b; }
+      .sub { font: 500 15px 'Segoe UI', Arial, sans-serif; fill: #475569; }
+      .tbl { fill: #ffffff; stroke: #9fb2d1; stroke-width: 2; rx: 16; ry: 16; }
+      .head { fill: #dfe8f6; rx: 16; ry: 16; }
+      .name { font: 700 18px 'Segoe UI', Arial, sans-serif; fill: #1e293b; }
+      .field { font: 500 13px 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .rel { stroke: #64748b; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+      .note { font: 500 12px 'Segoe UI', Arial, sans-serif; fill: #475569; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <rect class="bg" width="1800" height="1200"/>
+  <text class="title" x="900" y="56" text-anchor="middle">EcoWatt Relational Schema</text>
+  <text class="sub" x="900" y="88" text-anchor="middle">Logical data model inferred from the SQLite tables used by the app</text>
+
+  <rect class="tbl" x="60" y="140" width="250" height="170"/>
+  <rect class="head" x="60" y="140" width="250" height="42"/>
+  <text class="name" x="185" y="167" text-anchor="middle">USERS</text>
+  <text class="field" x="80" y="210">id PK</text>
+  <text class="field" x="80" y="233">email UK</text>
+  <text class="field" x="80" y="256">password_hash</text>
+  <text class="field" x="80" y="279">name</text>
+  <text class="field" x="80" y="302">role</text>
+
+  <rect class="tbl" x="360" y="140" width="280" height="190"/>
+  <rect class="head" x="360" y="140" width="280" height="42"/>
+  <text class="name" x="500" y="167" text-anchor="middle">APPLIANCES</text>
+  <text class="field" x="380" y="210">id PK</text>
+  <text class="field" x="380" y="233">name</text>
+  <text class="field" x="380" y="256">power</text>
+  <text class="field" x="380" y="279">category</text>
+  <text class="field" x="380" y="302">user_id</text>
+
+  <rect class="tbl" x="720" y="140" width="260" height="190"/>
+  <rect class="head" x="720" y="140" width="260" height="42"/>
+  <text class="name" x="850" y="167" text-anchor="middle">USAGE</text>
+  <text class="field" x="740" y="210">id PK</text>
+  <text class="field" x="740" y="233">appliance_id</text>
+  <text class="field" x="740" y="256">hours</text>
+  <text class="field" x="740" y="279">date</text>
+  <text class="field" x="740" y="302">user_id</text>
+
+  <rect class="tbl" x="1040" y="140" width="230" height="170"/>
+  <rect class="head" x="1040" y="140" width="230" height="42"/>
+  <text class="name" x="1155" y="167" text-anchor="middle">TARIFF</text>
+  <text class="field" x="1060" y="210">id PK</text>
+  <text class="field" x="1060" y="233">min_units</text>
+  <text class="field" x="1060" y="256">max_units</text>
+  <text class="field" x="1060" y="279">rate</text>
+
+  <rect class="tbl" x="1400" y="140" width="240" height="170"/>
+  <rect class="head" x="1400" y="140" width="240" height="42"/>
+  <text class="name" x="1520" y="167" text-anchor="middle">BUDGETS</text>
+  <text class="field" x="1420" y="210">id PK</text>
+  <text class="field" x="1420" y="233">month UK</text>
+  <text class="field" x="1420" y="256">budget</text>
+
+  <rect class="tbl" x="60" y="400" width="280" height="170"/>
+  <rect class="head" x="60" y="400" width="280" height="42"/>
+  <text class="name" x="200" y="427" text-anchor="middle">USER_BUDGETS</text>
+  <text class="field" x="80" y="470">id PK</text>
+  <text class="field" x="80" y="493">user_id</text>
+  <text class="field" x="80" y="516">month</text>
+  <text class="field" x="80" y="539">budget</text>
+
+  <rect class="tbl" x="380" y="400" width="270" height="190"/>
+  <rect class="head" x="380" y="400" width="270" height="42"/>
+  <text class="name" x="515" y="427" text-anchor="middle">ALERTS</text>
+  <text class="field" x="400" y="470">id PK</text>
+  <text class="field" x="400" y="493">user_id</text>
+  <text class="field" x="400" y="516">type</text>
+  <text class="field" x="400" y="539">message</text>
+  <text class="field" x="400" y="562">created_at</text>
+  <text class="field" x="400" y="585">acknowledged</text>
+
+  <rect class="tbl" x="700" y="400" width="300" height="200"/>
+  <rect class="head" x="700" y="400" width="300" height="42"/>
+  <text class="name" x="850" y="427" text-anchor="middle">REPORT_SNAPSHOTS</text>
+  <text class="field" x="720" y="470">id PK</text>
+  <text class="field" x="720" y="493">user_id</text>
+  <text class="field" x="720" y="516">month</text>
+  <text class="field" x="720" y="539">total_units</text>
+  <text class="field" x="720" y="562">cost</text>
+  <text class="field" x="720" y="585">budget / budget_delta / top_appliance / created_at</text>
+
+  <rect class="tbl" x="1060" y="400" width="270" height="170"/>
+  <rect class="head" x="1060" y="400" width="270" height="42"/>
+  <text class="name" x="1195" y="427" text-anchor="middle">NOTIFICATION_PREFERENCES</text>
+  <text class="field" x="1080" y="470">user_id PK</text>
+  <text class="field" x="1080" y="493">browser</text>
+  <text class="field" x="1080" y="516">in_app</text>
+
+  <rect class="tbl" x="1380" y="400" width="250" height="190"/>
+  <rect class="head" x="1380" y="400" width="250" height="42"/>
+  <text class="name" x="1505" y="427" text-anchor="middle">DIGEST_JOBS</text>
+  <text class="field" x="1400" y="470">user_id PK</text>
+  <text class="field" x="1400" y="493">enabled</text>
+  <text class="field" x="1400" y="516">interval_minutes</text>
+  <text class="field" x="1400" y="539">last_run_at</text>
+  <text class="field" x="1400" y="562">next_run_at</text>
+  <text class="field" x="1400" y="585">channels</text>
+
+  <rect class="tbl" x="180" y="700" width="330" height="200"/>
+  <rect class="head" x="180" y="700" width="330" height="42"/>
+  <text class="name" x="345" y="727" text-anchor="middle">NOTIFICATION_DELIVERIES</text>
+  <text class="field" x="200" y="770">id PK</text>
+  <text class="field" x="200" y="793">user_id</text>
+  <text class="field" x="200" y="816">channel</text>
+  <text class="field" x="200" y="839">subject</text>
+  <text class="field" x="200" y="862">message</text>
+  <text class="field" x="200" y="885">status / created_at / sent_at / metadata</text>
+
+  <text class="note" x="1240" y="730">Logical relationships used by queries and handlers</text>
+  <text class="note" x="1240" y="752">The app does not declare foreign-key constraints explicitly</text>
+
+  <path class="rel" d="M 310 220 L 360 220"/>
+  <path class="rel" d="M 640 235 L 720 235"/>
+  <path class="rel" d="M 980 240 L 1040 240"/>
+  <path class="rel" d="M 1270 235 L 1400 235"/>
+
+  <path class="rel" d="M 200 570 L 200 700"/>
+  <path class="rel" d="M 515 590 L 515 700"/>
+  <path class="rel" d="M 850 600 L 850 700"/>
+  <path class="rel" d="M 1195 570 L 1195 700"/>
+  <path class="rel" d="M 1505 590 L 1505 700"/>
+
+  <path class="rel" d="M 200 700 L 200 620 L 80 620 L 80 490" opacity="0.0"/>
+  <path class="rel" d="M 515 700 L 515 620 L 280 620 L 280 490" opacity="0.0"/>
+
+  <path class="rel" d="M 200 700 L 200 620" opacity="0.0"/>
+  <path class="rel" d="M 515 700 L 515 620" opacity="0.0"/>
+
+  <path class="rel" d="M 850 340 L 850 400"/>
+  <path class="rel" d="M 200 340 L 200 400"/>
+  <path class="rel" d="M 515 340 L 515 400"/>
+  <path class="rel" d="M 1195 340 L 1195 400"/>
+  <path class="rel" d="M 1505 340 L 1505 400"/>
+
+  <path class="rel" d="M 850 600 L 515 600 L 515 590" opacity="0.0"/>
+  <path class="rel" d="M 500 330 L 500 400" opacity="0"/>
+</svg>
